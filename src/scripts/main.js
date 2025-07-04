@@ -2,18 +2,8 @@
 
 // write code here
 function sortList() {
-  let list1 = [];
+  let list1 = getEmployees();
 
-  document.querySelectorAll('ul li').forEach((el) => {
-    list1.push({
-      name: el.textContent.trim(),
-      position: el.getAttribute('data-position'),
-      salary: Number(
-        el.getAttribute('data-salary').replaceAll(',', '').replaceAll('$', ''),
-      ),
-      age: el.getAttribute('data-age'),
-    });
-  });
   list1 = list1.sort((a, b) => b.salary - a.salary);
 
   document.querySelector('ul').innerHTML = '';
@@ -35,7 +25,9 @@ function getEmployees() {
     employees.push({
       name: el.textContent.trim(),
       position: el.getAttribute('data-position'),
-      salary: el.getAttribute('data-salary'),
+      salary: Number(
+        el.getAttribute('data-salary').replaceAll(',', '').replaceAll('$', ''),
+      ),
       age: el.getAttribute('data-age'),
     });
   });
